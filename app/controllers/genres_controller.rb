@@ -1,9 +1,17 @@
 class GenresController < ApplicationController
 
-  #/genres --- present user with list of clickable genres to show page
+#READ
+
+  get '/genres' do
+    @genres = Genre.all
+    erb :'genres/index'
+  end
+
+  get '/genres/:slug' do
+    @genre = Genre.find_by_slug(params[:slug])
+    erb :'genres/show'
+  end
 
   #/genres/new ---
-
-  #/genres/:slug -- should have links to each of its artists and songs.
 
 end

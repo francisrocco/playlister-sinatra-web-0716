@@ -1,14 +1,17 @@
 class ArtistsController < ApplicationController
 
 #READ
-#--- present user with list of clickable artists to show page
+
   get '/artists' do
     @artists = Artist.all
     erb :'artists/index'
   end
 
-  #/artists/new
+  get '/artists/:slug' do
+    @artist = Artist.find_by_slug(params[:slug])
+    erb :'artists/show'
+  end
 
-  #/artists/:slug --- should have links to songs and genres.
+  #/artists/new
 
 end
